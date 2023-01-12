@@ -1,0 +1,98 @@
+{% load static %}
+<div style="box-shadow: 0px 5px 0px #AF8150;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #F3D189;">
+          
+  <div class="">
+    <div style="max-width: 100px;">
+      <a class="navbar-brand" href="#"><img src="{% static 'img/LOGO_NO_MAS.png' %}" style="width: 100%;"></a>    
+    </div>
+    <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false" style="color:white;">Tiendas</a>    
+  </div>
+
+
+
+    <div style="float: right; display: inline-block;" >
+      <a href="#" class="btn btn-dark" style="font-size: 25px;">Mis productos</a>
+    </div>
+
+
+    
+  
+
+  <div >
+    <div style="color: gray;">
+ 
+    </div>
+    
+    <ul class="navbar-nav ml-auto">
+
+      <div style="float: right; display: inline-block;" class="container-fluid">
+    
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">        
+              <li class="nav_item">
+                 <a href="#" class="nav-link">Mis pedidos</a>
+              </li>
+
+              <li class="nav_item">
+                <a href="#" class="nav-link">Salir</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+  </div>
+
+
+  <div style="display: inline-block; float: right;">
+    <!-- <ul class="navbar-nav ml-auto"> -->
+      <li class="nav-item dropdown" style="list-style-type: none;">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white;">Ingresa</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#}">Cliente</a></li>                  
+            <li><hr class="dropdown-divider"></li>
+                  
+            <li><a class="dropdown-item" href="#">Repartidor</a></li>
+          </ul>
+      </li>
+    <!-- </ul> -->
+  </div>
+  
+
+
+  <div style=" display: inline-block; float: right;">
+
+      <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+      </ul> -->
+      <ul>
+      <li style="list-style-type: none;">
+        <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#ff734f" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+
+        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/> <circle r="5" fill="red">
+          <animateMotion dur="10s" repeatCount="indefinite"
+            path="M20,50 C20,-50 180,150 180,50 C180-50 20,150 20,50 z" />
+        </circle>
+      </svg></a>
+
+  <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+    <path fill="none" stroke="black"
+      d="M20,50 C20,-50 180,150 180,50 C180-50 20,150 20,50 z" />
+
+    <circle r="5" fill="red">
+      <animateMotion dur="10s" repeatCount="indefinite"
+        path="M20,50 C20,-50 180,150 180,50 C180-50 20,150 20,50 z" />
+    </circle>
+  </svg>
+      </li></ul>
+  </div>
+  
+</nav>
+</div>

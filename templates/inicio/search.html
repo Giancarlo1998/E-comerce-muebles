@@ -1,0 +1,111 @@
+{% extends 'cero.html' %}
+{% load static %}
+
+{% block title %} Búsqueda {% endblock %}
+
+{% block content %}
+
+
+
+{% if products %}
+<h2 class="textjc">Resultados de la búsqueda</h2>
+
+{% for product in products %}
+  {% if product.available %}<br>
+    {% if forloop.first %}<div class="row">{% endif %} <br>
+
+    <div class="col-6"> <!-- cambia el tamaño de tarjetas-->
+      <div class="card h-100  border-2 mb-3" style="width: 100%">
+
+        <a href="{% url 'detalle' product.id %}" style="text-decoration:none;"> <img src="{{product.imagen.url}}" class="card-img-top" style='width:100%; height: 100%; object-fit: cover; max-height: 120px; min-height: 120px;' alt="{{product.nombre}}">
+        
+        
+        <div class="card-body">
+          <strong class="card-title">{{product.nombre}}</strong>
+          <hr/>
+          <p class="card-text text-justify"> </p>
+
+        </div>
+
+
+        <div class="row">
+            {% if product.warranty %} <ul style="color:#FBBC04;display: inline-block;  text-align: center; margin: auto;">
+            <li style="color:#FBBC04;display: inline-block;  float: right; ">{{product.warranty}}</li>
+            {% endif %}             
+            {% if product.marked_price %} 
+                    <li style="color:gray; display: inline-block;  float: left;"><strike>${{product.marked_price}}</strike></li></ul>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <strong style="color: #FFA833; font-size: 20px;">${{product.price}}</strong>
+                    </div>
+              <div class="card-footer text-center">
+            
+            <div class="btn btn-warning rounded-pill">
+             ¡Al precio más bajo!</div>
+          </div>
+                {% else %}
+                <br>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <strong style="color: green;">${{product.price}}</strong>
+                    </div>{% endif %}
+
+              </div>
+
+         
+          </a>
+        </div>
+      </div>
+    {% if forloop.counter|divisibleby:2 %} </div>  <br>  <div class="row"> {% endif %} <!-- cambia el tamaño de tarjetas-->
+
+    {% if forloop.last %} </div>  {% endif %} 
+
+    {% else %}
+      {% if forloop.first %}<div class="row">{% endif %}<br>
+    <div class="col-6">
+
+      <div class="card h-100 border-warning border-2 mb-3" style="width: 100%">
+        <img src="{% static 'img/oh-no.png' %}" class="card-img-top" style='width:100%; height: 100%; object-fit: cover; max-height: 120px; min-height: 120px;' alt="{{product.nombre}}">
+        <div class="card-body">
+          <h5 class="card-title">{{product.nombre}}</h5>
+          <hr/>
+          <p class="card-text text-justify">No disponible por el momento</p>
+
+        </div>
+      </div>
+      </div>
+
+
+    {% if forloop.counter|divisibleby:2 %} </div>  <br>  <div class="row"> {% endif %} <!-- cambia el tamaño de tarjetas-->
+
+    {% if forloop.last %} </div>  {% endif %} 
+    
+  {% endif %}
+{% endfor %}
+
+{% else %}
+<br><br>
+
+  <div class="alert alert-danger">No tenemos lo que buscas :'(</div>
+<div >Comparte con nosotros lo que estas buscando tocando el botón verde</div>
+
+
+  <div class="card card-body" style="text-align:center;">
+    <form method="POST" action="" class="mt-2" > {% csrf_token %}
+
+    <p style="color:black;"><input name="asunto" value="Busqué, pero no encontré: "></p>
+
+    <p style="color:black;"><input type="text" name="mensaje" value="{{request.GET.Search}}"></p>
+    
+    <input type="submit" value="Compartir"class="btn btn-success">
+
+
+
+</form>
+  </div>
+
+
+
+
+
+{% endif %}
+
+{% endblock %}

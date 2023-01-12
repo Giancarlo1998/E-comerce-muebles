@@ -1,0 +1,23 @@
+<ul style="display: flex; justify-content: center; align-items: center;  float: center; margin: auto;">
+<div>
+  <a class="btn" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="background-color: rgb(35, 116, 225); color: white;">
+    Toca aquí si <br>te gusta este producto
+  </a>
+  
+</div></ul>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body" style="text-align:center;">
+    <form method="POST" action="" class="mt-2" > {% csrf_token %}
+
+    <p style="color:black;">Quiero informacion de <input name="mensaje" value="{{product.nombre}}, código {{product.linkjc}}"></p>
+
+    <p style="color:black;">Por favor escriba su Teléfono o email: <input type="text" name="asunto" required="true"></p>
+    
+    <input type="submit" value="¡Solicitar sin costo!"class="btn btn-success">
+
+
+
+</form>
+  </div>
+</div>  <br><br>
+

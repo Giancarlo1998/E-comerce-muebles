@@ -1,0 +1,97 @@
+{% extends 'cero.html' %}
+
+
+{% load static %}
+
+{% block title %}Muebles{% endblock %}
+
+{% block content %}
+
+
+
+
+<p>{{product.categoria.nombre}}</p>
+
+<div style="display: flex; justify-content: center; align-items: center; text-align: center;">
+  <h1 class="font-effect-3d-float"></h1>
+</div>
+
+
+
+
+{% if productos %}
+
+  {% for product in productos %}
+
+   {% if product.available %}<br>
+   
+<a href="{% url 'detalle' product.id %}" style="color: black; text-decoration:none;">
+<div class="card mb-3" style="background-color:rgb(36, 37, 38);">
+  <img src="{{product.imagen.url}}" class="card-img-top b-c-img" alt="{{product.nombre}}">
+  <div class="card-body">
+    <h5 class="card-title" style="color:white;">{{product.nombre}}</h5>
+    <div class="row">
+            {% if product.warranty %} <ul style="color:#FBBC04;display: inline-block;  text-align: center; margin: auto;">
+            <li style="color:#FBBC04;display: inline-block;  float: right; ">{{product.warranty}}</li>
+            {% endif %}             
+            {% if product.marked_price %} 
+                    <li style="color:gray; display: inline-block;  float: left;"><strike>${{product.marked_price}}</strike></li></ul>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <strong style="color: #FFA833; font-size: 20px;">${{product.price}}</strong>
+                    </div>
+
+                {% else %}
+                <br>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <strong style="color: rgb(35, 116, 225);">${{product.price}}</strong>
+                    </div>{% endif %}
+
+              </div>
+  </div>
+</div>
+
+</a>   
+       
+
+           
+        
+  {% else %}
+     <div class="card mb-3" >
+  <div class="row g-0">
+    <div class="col-4">
+      <img src="{{product.imagen.url}}" style="filter: grayscale(1);" class="card-img-top b-c-img" alt="{{product.nombre}}">
+    </div>
+    <div class="col-8">
+      <div class="card-body">
+        
+        <h5 class="card-title"> {{ product.nombre }} </h5>
+        <button class="btn btn-dark rounded-pill" style="float:right; color:white;"> No disponible por el momento </button>
+        </small></p>
+      </div>
+    </div>
+  </div>
+</div>
+        
+    {% endif %}
+
+     
+
+      {% endfor %}
+
+{% else %}
+
+  <div class="alert alert-danger">No hay productos disponibles :(</div>
+  <div style="margin: auto; display: block; max-width: 400px;">
+    <img src="{% static 'img/oh-no.png' %}" class="" style="margin: auto; display:block;width:70%; transform: scaleX(-1);" alt="Oh No"></div>
+
+{% endif %}
+
+
+{% include "inicio/paginacion.html" %}
+
+
+<div class="btn btn-dark"style="float: right;"><a href="#" style="text-decoration:none;">Volver <br>arriba</a></div>
+<br><br>
+
+
+{% endblock %}

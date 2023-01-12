@@ -1,0 +1,157 @@
+{% extends 'cero.html' %}
+
+
+{% load static %}
+
+{% block title %}Muebles{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+<div style="display: flex; justify-content: center; align-items: center; text-align: center;">
+
+<h1 class="font-effect-3d-float">Pago contra entrega <br>¡Gracias por su preferencia!</h1>
+
+</div>
+
+<ul style="display: flex; justify-content: center; align-items: center;  float: right; margin: auto;">
+<div>
+  <a class="btn btn-primary" href="{% url 'Categorias' %}" role="button">
+    Categorías
+  </a>
+  
+</div></ul>
+
+<br>
+
+
+
+{% if productos %}
+
+  {% for product in productos %}
+
+   {% if product.available %}<br>
+   
+    {% if forloop.first %}<div class="row">{% endif %} 
+ 
+        
+        <div class="col-6"> <!-- cambia el tamaño de tarjetas--> 
+        	
+          <div class="card h-100 border-dark border-2 mb-3" style="width: 100%">
+          	<a href="{% url 'detalle' product.id %}">
+            <img src="{{product.imagen.url}}" class="card-img-top" style='width:100%; height: 100%; object-fit: cover; max-height: 120px; min-height: 120px;' alt="{{product.nombre}}">
+
+            <div class="card-body">
+              
+              <strong class="card-title">{{product.nombre}}</strong>
+              <hr>
+
+
+
+              <div class="row">
+            {% if product.warranty %} <ul style="color:#FBBC04;display: inline-block;  text-align: center; margin: auto;">
+            <li style="color:#FBBC04;display: inline-block;  float: right; ">{{product.warranty}}</li>
+            {% endif %}             
+            {% if product.marked_price %} 
+                    <li style="color:gray; display: inline-block;  float: left;"><strike>${{product.marked_price}}</strike></li></ul>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <strong style="color: #FFA833; font-size: 20px;">Oferta: ${{product.price}}</strong>
+                    </div>
+
+                {% else %}
+                <br>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <strong style="color: green;">Precio: ${{product.price}}</strong>
+                    </div>{% endif %}
+
+              </div>
+         
+            </div></a>
+          </div>
+        </div>
+  {% else %}
+      <div class="col-6"> <!-- cambia el tamaño de tarjetas-->
+        <div class="card h-100 border-gray border-2 mb-3" style="width: 100%">
+
+          <img src="{{product.imagen.url}}" class="card-img-top" style='width:100%; height: 100%; object-fit: cover; max-height: 120px; min-height: 120px; filter: grayscale(1);' alt="{{product.nombre}}">
+
+            
+         
+            <div class="card-footer text-center">No disponible por el momento
+            </div>
+        </div>
+      </div>
+        
+    {% endif %}
+
+      {% if forloop.counter|divisibleby:2 %} </div>  <br>  <div class="row"> {% endif %} <!-- cambia el tamaño de tarjetas-->
+
+      {% if forloop.last %} </div>  {% endif %}
+
+      {% endfor %}
+
+{% else %}
+
+  <div class="alert alert-danger">No hay productos disponibles :(</div>
+  <div style="margin: auto; display: block; max-width: 400px;">
+    <img src="{% static 'img/oh-no.png' %}" class="" style="margin: auto; display:block;width:70%; transform: scaleX(-1);" alt="Oh No"></div>
+
+{% endif %}
+
+
+{% include "inicio/paginacion.html" %}
+
+
+<div class="btn btn-dark"style="float: right;"><a href="#">Volver <br>arriba</a></div>
+<br><br>
+
+
+
+  <div class="container">
+    <div class="row">
+       
+      <div class="col-6">
+               
+        <div class="box-part text-center" >
+          <a href="https://www.instagram.com/roy201315/" target="_blank"><i class="fa fa-instagram fa-3x" aria-hidden="true" style="color: white;"></i>
+                        
+            <div class="title" style="color: white;">
+              <h5>Instagram</h5>
+            </div>
+                        
+            </a>
+                        
+        </div>
+      </div>   
+        
+      <div class="col-6">
+               
+        <div class="box-part text-center">
+            <a href="https://www.facebook.com/NO-DEJES-QU3-110275030832366/?notif_id=1635179392888913&notif_t=aymt_page_post_reminder_14d_notification&ref=notif" target="_blank"><i class="fa fa-facebook fa-3x" aria-hidden="true" style="color: white;"></i>
+                        
+            <div class="title" style="color: white;">
+              <h5>Facebook</h5>
+            </div>
+                        
+                                    
+            </a>
+                        
+           </div>
+        </div>   
+        
+        
+    </div>
+  </div> 
+
+
+
+
+
+
+
+ 
+{% endblock %}
